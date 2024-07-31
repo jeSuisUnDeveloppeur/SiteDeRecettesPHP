@@ -1,4 +1,11 @@
-<?php session_start();?>
+<?php 
+session_start();
+require_once(__DIR__ . '/config/mysql.php');
+require_once(__DIR__ . '/databaseconnect.php');
+require_once(__DIR__ . '/variables.php');
+require_once(__DIR__ . '/functions.php');
+?>
+
 <!DOCTYPE html>
    <html lang="en">
    <head>
@@ -11,21 +18,12 @@
    <body>
     <?php require_once 'header.php'?>
    <div class="row justify-content-center text-center">
-            <h2 class="bg-primary col-5 col-sm-4 col-md-3 col-lg-2 p-2 my-5 rounded-2 text-light">Page de connexion</h2>
-        </div>
-<?php if (!isset($_SESSION['LOGGED_USER'])) : ?>
+            <h2 class="bg-primary col-5 col-sm-4 col-md-3 col-lg-2 p-2 my-5 rounded-2 text-light">Création de compte</h2>
+    </div>
     <form action="submit_login.php" method="POST" class="mt-5">
-        <!-- si message d'erreur on l'affiche -->
-        <?php if (isset($_SESSION['LOGIN_ERROR_MESSAGE'])) : ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo $_SESSION['LOGIN_ERROR_MESSAGE'];
-                unset($_SESSION['LOGIN_ERROR_MESSAGE']); ?>
-            </div>
-        <?php endif; ?>
         <div class="mb-3 w-75 mx-auto">
             <label for="email" class="form-label ">Email</label>
             <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" placeholder="you@exemple.com">
-            <div id="email-help" class="form-text">L'email utilisé lors de la création de compte.</div>
         </div>
         <div class="mb-3 mx-auto w-75">
             <label for="password" class="form-label">Mot de passe</label>
@@ -35,19 +33,3 @@
             <button type="submit" class="btn btn-primary col-4 col-sm-3 col-md-2 col-lg-1 ">Envoyer</button>
         </div>
     </form>
-    <!-- Si utilisateur/trice bien connectée on affiche un message de succès -->
-<?php else : ?>
-    <div class="alert alert-success mt-3 text-center" role="alert">
-        Bonjour <?php echo $_SESSION['LOGGED_USER']['email']; ?> et bienvenue sur le site !
-    </div>
-    <?php if(isset($_SESSION['COMMENT_SUCCESS'])):?>
-        <div class="alert alert-primary mt-3" role="alert">
-            <?= $_SESSION['COMMENT_SUCCESS']?>
-            <?php unset($_SESSION['COMMENT_SUCCESS'])?>
-        </div>
-    <?php endif ?>
-<?php endif; ?>
-<?php require_once 'footer.php'?>
-</body>
-</html>
-

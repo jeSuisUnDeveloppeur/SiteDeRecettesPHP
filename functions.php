@@ -40,3 +40,10 @@ function redirectToUrl(string $url): never
     header("Location: {$url}");
     exit();
 }
+
+function sanitize(mixed $data):mixed{
+    $data = htmlspecialchars($data);
+    $data = stripslashes($data);
+    $data = trim($data);
+    return $data;
+}
