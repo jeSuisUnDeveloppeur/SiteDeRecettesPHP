@@ -17,11 +17,17 @@
     <form action="submit_login.php" method="POST" class="mt-5">
         <!-- si message d'erreur on l'affiche -->
         <?php if (isset($_SESSION['LOGIN_ERROR_MESSAGE'])) : ?>
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger text-center mx-auto w-50" role="alert">
                 <?php echo $_SESSION['LOGIN_ERROR_MESSAGE'];
                 unset($_SESSION['LOGIN_ERROR_MESSAGE']); ?>
             </div>
         <?php endif; ?>
+        <?php if (isset($_SESSION['ACCOUNT_CREATED'])):?>
+            <div class="alert alert-success text-center mx-auto w-50" role="alert">
+                <?php echo $_SESSION['ACCOUNT_CREATED'];
+                unset($_SESSION['ACCOUNT_CREATED']); ?>
+            </div>
+        <?php endif?>
         <div class="mb-3 w-75 mx-auto">
             <label for="email" class="form-label ">Email</label>
             <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" placeholder="you@exemple.com">

@@ -36,10 +36,9 @@ $recipe = $retrieveRecipeStatement->fetch(PDO::FETCH_ASSOC);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"defer></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
-    <div class="container">
-
-        <?php require_once(__DIR__ . '/header.php'); ?>
-        <h1>Mettre à jour <?php echo($recipe['title']); ?></h1>
+    <?php require_once(__DIR__ . '/header.php'); ?>
+    <div class="container mt-5">
+        <h1 class="text-center mx-auto bg-primary text-white my-5 rounded-2 p-3 col-8 col-sm-7 col-md-6 col-lg-8">Mettre à jour <?php echo($recipe['title']); ?></h1>
         <form action="recipes_post_update.php" method="POST">
             <div class="mb-3 visually-hidden">
                 <label for="id" class="form-label">Identifiant de la recette</label>
@@ -54,9 +53,11 @@ $recipe = $retrieveRecipeStatement->fetch(PDO::FETCH_ASSOC);
                 <label for="recipe" class="form-label">Description de la recette</label>
                 <textarea class="form-control" placeholder="Seulement du contenu vous appartenant ou libre de droits." id="recipe" name="recipe"><?php echo $recipe['recipe']; ?></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
+            <div class="row justify-content-center">
+                <button type="submit" class="btn btn-primary col-4 col-sm-3 col-md-2 col-lg-1 ">Envoyer</button>
+            </div>
         </form>
-        <br />
+        <br/>
     </div>
 
     <?php require_once(__DIR__ . '/footer.php'); ?>

@@ -20,15 +20,31 @@ require_once(__DIR__ . '/functions.php');
    <div class="row justify-content-center text-center">
             <h2 class="bg-primary col-5 col-sm-4 col-md-3 col-lg-2 p-2 my-5 rounded-2 text-light">Création de compte</h2>
     </div>
-    <form action="submit_login.php" method="POST" class="mt-5">
+    <form action="submit_signin.php" method="POST" class="mt-5">
         <div class="mb-3 w-75 mx-auto">
-            <label for="email" class="form-label ">Email</label>
+            <label for="name" class="form-label ">Nom *</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="mb-3 w-75 mx-auto">
+            <label for="firstName" class="form-label ">Prénom *</label>
+            <input type="text" class="form-control" id="firstName" name="firstName">
+        </div>
+        <div class="mb-3 w-75 mx-auto">
+            <label for="age" class="form-label ">age *</label>
+            <input type="number" class="form-control" id="age" name="age">
+        </div>
+        <div class="mb-3 w-75 mx-auto">
+            <label for="email" class="form-label ">Email *</label>
             <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" placeholder="you@exemple.com">
         </div>
         <div class="mb-3 mx-auto w-75">
-            <label for="password" class="form-label">Mot de passe</label>
+            <label for="password" class="form-label">Mot de passe *</label>
             <input type="password" class="form-control" id="password" name="password">
         </div>
+        <?php if(isset( $_SESSION['SIGNIN_ERROR'])):?>
+            <p class="alert alert-danger text-center w-50 mx-auto" role="alert"><?= $_SESSION['SIGNIN_ERROR']?></p>
+            <?php unset( $_SESSION['SIGNIN_ERROR'])?>
+        <?php endif?>
         <div class="row justify-content-center">
             <button type="submit" class="btn btn-primary col-4 col-sm-3 col-md-2 col-lg-1 ">Envoyer</button>
         </div>

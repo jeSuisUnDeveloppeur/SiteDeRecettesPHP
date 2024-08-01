@@ -48,9 +48,8 @@ $insertRecipeStatement->execute([
 
 </head>
 <body class="d-flex flex-column min-vh-100">
+    <?php require_once(__DIR__ . '/header.php'); ?>
     <div class="container">
-
-        <?php require_once(__DIR__ . '/header.php'); ?>
         <h1>Recette modifiée avec succès !</h1>
 
         <div class="card">
